@@ -9,7 +9,8 @@ theme = WebpackThemeBundle(
     themes={
         "semantic-ui": dict(
             entry={
-                # Add your webpack entrypoints
+                # Inter font definitions
+                "invenio-rdm-starter-fonts": "./less/invenio_rdm_starter/fonts.less",
             },
         ),
     },

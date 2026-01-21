@@ -1,0 +1,9 @@
+{#
+  Custom base template to include Inter font definitions
+#}
+{%- extends config.BASE_TEMPLATE %}
+
+{%- block css %}
+  {{ super() }}
+  {{ webpack['invenio-rdm-starter-fonts.css'] }}
+{%- endblock css %}
