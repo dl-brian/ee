@@ -32,9 +32,9 @@
        Links
 --------------------*/
 
-@linkColor           : @red;
+@linkColor           : @darkBlue;
 @linkUnderline       : none;
-@linkHoverColor      : @darkRed;
+@linkHoverColor      : @blue;
 @linkHoverUnderline  : @linkUnderline;
 
 /*-------------------
