@@ -81,10 +81,6 @@
 @midWhite         : #DCDDDE;
 @white            : #FFFFFF;
 
-@darkTextColor    : @lightBlack;
-@mutedTextColor   : @grey;
-@lightTextColor   : @lightGrey;
-
 /*---  Dark Colors  ---*/
 @darkRed         : #b91c1c;
 @darkOrange      : #c2410c;
@@ -99,6 +95,12 @@
 @darkPink        : #be185d;
 @darkBrown       : #92400e; // amber
 @darkGrey        : #1e293b; // slate
+
+/*---  Other Colors  ---*/
+@darkTextColor    : @lightBlack;
+@mutedTextColor   : @grey;
+@lightTextColor   : @lightGrey;
+@negativeTextColor: @darkYellow
 
 /*-------------------
     Invenio RDM Colors
