@@ -81,6 +81,7 @@ services:
       - caddy_config:/config
   web:
     image: ghcr.io/dl-brian/invenio-rdm-starter:latest
+    platform: linux/amd64
     pull_policy: if_not_present
     volumes:
       - uploaded_data:/opt/invenio/var/instance/data
@@ -147,6 +148,7 @@ services:
   worker:
     command: "celery -A invenio_app.celery worker --beat --events --loglevel=WARNING"
     image: ghcr.io/dl-brian/invenio-rdm-starter:latest
+    platform: linux/amd64
     pull_policy: if_not_present
     volumes:
       - uploaded_data:/opt/invenio/var/instance/data
