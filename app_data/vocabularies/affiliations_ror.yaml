@@ -345,3 +345,11 @@
   name: Old Dominion University
   title:
     en: Old Dominion University
+- id: 03ykbk197
+  country: GB
+  identifiers:
+    - identifier: 03ykbk197
+      scheme: ror
+  name: University of Portsmouth
+  title:
+    en: University of Portsmouth
