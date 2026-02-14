@@ -6,6 +6,11 @@ html.cover-page {
   background-color: @grey;
 }
 
+.theme-default.outer-navbar {
+  background-color: @grey;
+  background-image: none;
+}
+
 .creatibutor-link {
   color: @mutedTextColor;
   margin: 0 0.25rem 0 0;
