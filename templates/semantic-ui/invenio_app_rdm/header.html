@@ -110,6 +110,11 @@
               {% endfor %}
             {%- endblock navbar_nav %}
 
+            {%- block navbar_right %}
+              <div class="right menu item">
+                {%- include config.THEME_HEADER_LOGIN_TEMPLATE %}
+              </div>
+            {%- endblock navbar_right %}
           </nav>
         </nav>
       </div>
