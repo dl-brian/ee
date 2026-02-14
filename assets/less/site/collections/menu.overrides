@@ -12,3 +12,9 @@
     }
   }
 }
+
+#invenio-nav {
+  .item.search-bar {
+    flex: 1;
+  }
+}
