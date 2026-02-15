@@ -3,7 +3,6 @@
 ***********************************************/
 
 #header-search-bar {
-    width: 350px !important;
     margin-left: auto;
     margin-right: auto;
     .ui.fluid.search {
