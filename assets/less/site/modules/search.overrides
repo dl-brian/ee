@@ -3,21 +3,21 @@
 ***********************************************/
 
 #header-search-bar {
-    width: 350px;
-    text-align: center;
-    .ui.fluid.search.right-angle-search-content{
-        .ui.input{
-            input{
+    width: 350px !important;
+    margin-left: auto;
+    margin-right: auto;
+    .ui.fluid.search {
+        .ui.icon.input {
+            input {
                 border-top-right-radius: 0px;
                 border-bottom-right-radius: 0px;
             }
 
-            button{
+            button {
                 border-top-left-radius: 0px;
                 border-bottom-left-radius: 0px;
                 margin: 0em;
             }
-
         }
     }
 }
