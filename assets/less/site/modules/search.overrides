@@ -3,8 +3,8 @@
 ***********************************************/
 
 #header-search-bar {
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: auto !important;
+    margin-right: auto !important;
     .ui.fluid.search {
         .ui.icon.input {
             input {
