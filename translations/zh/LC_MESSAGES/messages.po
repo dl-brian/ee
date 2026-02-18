@@ -1,0 +1,582 @@
+# Chinese translations for PROJECT.
+# Copyright (C) 2026 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2026-02-18 19:48+0000\n"
+"PO-Revision-Date: 2026-02-18 19:48+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: zh <LL@li.org>\n"
+"Language: zh\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: invenio.cfg:170
+msgid "Chinese"
+msgstr "中文"
+
+#: invenio.cfg:171
+msgid "Portuguese"
+msgstr "葡萄牙语"
+
+#: invenio.cfg:172
+msgid "Spanish"
+msgstr "西班牙语"
+
+#: invenio.cfg:182
+msgid "Welcome to Invenio RDM Starter"
+msgstr "欢迎来到 Invenio RDM Starter"
+
+#: invenio.cfg:287 invenio.cfg:302 invenio.cfg:343 invenio.cfg:659
+msgid "DOI"
+msgstr ""
+
+#: invenio.cfg:292
+msgid "OAI ID"
+msgstr ""
+
+#: invenio.cfg:311
+msgid "OAI"
+msgstr ""
+
+#: invenio.cfg:327
+msgid "ARK"
+msgstr ""
+
+#: invenio.cfg:329
+msgid "arXiv"
+msgstr ""
+
+#: invenio.cfg:334
+msgid "Bibcode"
+msgstr ""
+
+#: invenio.cfg:339
+msgid "Crossref Funder ID"
+msgstr "Crossref 资助者 ID"
+
+#: invenio.cfg:345
+msgid "EAN13"
+msgstr ""
+
+#: invenio.cfg:350
+msgid "EISSN"
+msgstr ""
+
+#: invenio.cfg:355
+msgid "GRID"
+msgstr ""
+
+#: invenio.cfg:360
+msgid "Handle"
+msgstr ""
+
+#: invenio.cfg:365
+msgid "IGSN"
+msgstr ""
+
+#: invenio.cfg:370
+msgid "ISBN"
+msgstr ""
+
+#: invenio.cfg:375
+msgid "ISNI"
+msgstr ""
+
+#: invenio.cfg:380
+msgid "ISSN"
+msgstr ""
+
+#: invenio.cfg:385
+msgid "ISTC"
+msgstr ""
+
+#: invenio.cfg:390
+msgid "LISSN"
+msgstr ""
+
+#: invenio.cfg:395
+msgid "LSID"
+msgstr ""
+
+#: invenio.cfg:400
+msgid "PMID"
+msgstr ""
+
+#: invenio.cfg:405
+msgid "PURL"
+msgstr ""
+
+#: invenio.cfg:409
+msgid "UPC"
+msgstr ""
+
+#: invenio.cfg:410 invenio.cfg:660
+msgid "URL"
+msgstr ""
+
+#: invenio.cfg:411
+msgid "URN"
+msgstr ""
+
+#: invenio.cfg:413
+msgid "W3ID"
+msgstr ""
+
+#: invenio.cfg:419
+msgid "UUID"
+msgstr ""
+
+#: invenio.cfg:424
+msgid "GUID"
+msgstr ""
+
+#: invenio.cfg:429
+msgid "Other"
+msgstr "其他"
+
+#: invenio.cfg:449
+msgid "Publishing information"
+msgstr "出版信息"
+
+#: invenio.cfg:460
+msgid "Best match"
+msgstr "最佳匹配"
+
+#: invenio.cfg:464
+msgid "Newest"
+msgstr "最新"
+
+#: invenio.cfg:468
+msgid "Oldest"
+msgstr "最早"
+
+#: invenio.cfg:472
+msgid "Version"
+msgstr "版本"
+
+#: invenio.cfg:476
+msgid "Recently updated"
+msgstr "最近更新"
+
+#: invenio.cfg:480
+msgid "Least recently updated"
+msgstr "最早更新"
+
+#: invenio.cfg:484
+msgid "Recently added"
+msgstr "最近添加"
+
+#: invenio.cfg:488
+msgid "Least recently added"
+msgstr "最早添加"
+
+#: invenio.cfg:492
+msgid "Most viewed"
+msgstr "浏览最多"
+
+#: invenio.cfg:598
+msgid "Publication year"
+msgstr "出版年份"
+
+#: invenio.cfg:607
+msgid "Author affiliations"
+msgstr "作者机构"
+
+#: invenio.cfg:617
+msgid "Funders"
+msgstr "资助机构"
+
+#: invenio.cfg:627
+msgid "Author identifiers"
+msgstr "作者标识符"
+
+#: invenio.cfg:628
+msgid "ORCID"
+msgstr ""
+
+#: invenio.cfg:637
+msgid "Licenses"
+msgstr "许可证"
+
+#: invenio.cfg:647
+#: templates/semantic-ui/invenio_app_rdm/records/details/details.html:141
+#: templates/semantic-ui/invenio_app_rdm/records/details/details.html:157
+msgid "Related works"
+msgstr "相关作品"
+
+#: invenio.cfg:657
+#: templates/semantic-ui/invenio_app_rdm/records/details/details.html:301
+msgid "References"
+msgstr "参考文献"
+
+#: invenio.cfg:661
+msgid "No identifier"
+msgstr "无标识符"
+
+#: invenio.cfg:860
+msgid "APA"
+msgstr ""
+
+#: invenio.cfg:861
+msgid "Harvard"
+msgstr ""
+
+#: invenio.cfg:862
+msgid "IEEE"
+msgstr ""
+
+#: invenio.cfg:863
+msgid "MLA"
+msgstr ""
+
+#: invenio.cfg:864
+msgid "Vancouver"
+msgstr ""
+
+#: invenio.cfg:865
+msgid "Chicago"
+msgstr ""
+
+#: templates/semantic-ui/invenio_app_rdm/footer.html:18
+#: templates/semantic-ui/invenio_app_rdm/footer.html:19
+msgid "About"
+msgstr "关于"
+
+#: templates/semantic-ui/invenio_app_rdm/footer.html:20
+msgid "How to access"
+msgstr "如何访问"
+
+#: templates/semantic-ui/invenio_app_rdm/footer.html:23
+msgid "Contact"
+msgstr "联系"
+
+#: templates/semantic-ui/invenio_app_rdm/footer.html:24
+msgid "Email"
+msgstr "电子邮件"
+
+#: templates/semantic-ui/invenio_app_rdm/footer.html:25
+msgid "LinkedIn"
+msgstr ""
+
+#: templates/semantic-ui/invenio_app_rdm/footer.html:26
+msgid "Instagram"
+msgstr ""
+
+#: templates/semantic-ui/invenio_app_rdm/header.html:37
+msgid "home"
+msgstr "首页"
+
+#: templates/semantic-ui/invenio_app_rdm/header.html:50
+msgid "Menu"
+msgstr "菜单"
+
+#: templates/semantic-ui/invenio_app_rdm/header.html:67
+msgid "Close menu"
+msgstr "关闭菜单"
+
+#: templates/semantic-ui/invenio_app_rdm/header.html:119
+msgid "Requests"
+msgstr "请求"
+
+#: templates/semantic-ui/invenio_app_rdm/header.html:122
+msgid "Inbox"
+msgstr "收件箱"
+
+#: templates/semantic-ui/invenio_app_rdm/header_login.html:17
+#: templates/semantic-ui/invenio_app_rdm/header_login.html:20
+msgid "Log in"
+msgstr "登录"
+
+#: templates/semantic-ui/invenio_app_rdm/header_login.html:25
+msgid "Sign up"
+msgstr "注册"
+
+#: templates/semantic-ui/invenio_app_rdm/header_login.html:37
+#: templates/semantic-ui/invenio_app_rdm/header_login.html:87
+msgid "My account"
+msgstr "我的账户"
+
+#: templates/semantic-ui/invenio_app_rdm/header_login.html:77
+#: templates/semantic-ui/invenio_app_rdm/header_login.html:80
+#: templates/semantic-ui/invenio_app_rdm/header_login.html:114
+#: templates/semantic-ui/invenio_app_rdm/header_login.html:117
+#: templates/semantic-ui/invenio_app_rdm/header_login.html:129
+#: templates/semantic-ui/invenio_app_rdm/header_login.html:132
+msgid "Log out"
+msgstr "退出"
+
+#: templates/semantic-ui/invenio_app_rdm/site_footer.html:16
+msgid "Powered by"
+msgstr "技术支持"
+
+#: templates/semantic-ui/invenio_app_rdm/site_footer.html:17
+msgid "InvenioRDM"
+msgstr ""
+
+#: templates/semantic-ui/invenio_app_rdm/macros/records_list.html:10
+msgid "Latest content"
+msgstr "最新内容"
+
+#: templates/semantic-ui/invenio_app_rdm/records/detail.html:51
+msgid "Information banner"
+msgstr "信息横幅"
+
+#: templates/semantic-ui/invenio_app_rdm/records/detail.html:80
+msgid "Part of"
+msgstr "属于"
+
+#: templates/semantic-ui/invenio_app_rdm/records/detail.html:91
+msgid "Community visibility"
+msgstr "社区可见性"
+
+#: templates/semantic-ui/invenio_app_rdm/records/detail.html:92
+msgid "The community is restricted to users with access."
+msgstr "该社区仅限有权限的用户访问。"
+
+#: templates/semantic-ui/invenio_app_rdm/records/detail.html:94
+msgid "Restricted"
+msgstr "受限"
+
+#: templates/semantic-ui/invenio_app_rdm/records/detail.html:111
+msgid "Preview"
+msgstr "预览"
+
+#: templates/semantic-ui/invenio_app_rdm/records/detail.html:115
+msgid "You are previewing a published record."
+msgstr "您正在预览一条已发布的记录。"
+
+#: templates/semantic-ui/invenio_app_rdm/records/detail.html:117
+msgid "You are previewing changes that have not yet been published."
+msgstr "您正在预览尚未发布的更改。"
+
+#: templates/semantic-ui/invenio_app_rdm/records/detail.html:119
+msgid "You are previewing a new record that has not yet been published."
+msgstr "您正在预览一条尚未发布的新记录。"
+
+#: templates/semantic-ui/invenio_app_rdm/records/detail.html:121
+msgid ""
+"You are previewing a new record version that has not yet been published."
+msgstr "您正在预览一个尚未发布的新版本记录。"
+
+#: templates/semantic-ui/invenio_app_rdm/records/detail.html:136
+#, python-format
+msgid ""
+"\n"
+"                    There is a %(link_start)snewer version%(link_end)s of the record\n"
+"                    available.\n"
+"                  "
+msgstr ""
+
+#: templates/semantic-ui/invenio_app_rdm/records/detail.html:160
+msgid "Record access information"
+msgstr "记录访问信息"
+
+#: templates/semantic-ui/invenio_app_rdm/records/detail.html:167
+#: templates/semantic-ui/invenio_app_rdm/records/detail.html:303
+msgid "Reason"
+msgstr "原因"
+
+#: templates/semantic-ui/invenio_app_rdm/records/detail.html:180
+msgid "Back-navigation"
+msgstr "返回导航"
+
+#: templates/semantic-ui/invenio_app_rdm/records/detail.html:182
+msgid "Back to edit"
+msgstr "返回编辑"
+
+#: templates/semantic-ui/invenio_app_rdm/records/detail.html:200
+msgid "Manage record"
+msgstr "管理记录"
+
+#: templates/semantic-ui/invenio_app_rdm/records/detail.html:218
+msgid "Publication date and version number"
+msgstr "出版日期和版本号"
+
+#: templates/semantic-ui/invenio_app_rdm/records/detail.html:220
+#: templates/semantic-ui/invenio_app_rdm/records/details/side_bar/details.html:20
+msgid "Publication date"
+msgstr "出版日期"
+
+#: templates/semantic-ui/invenio_app_rdm/records/detail.html:221
+msgid "Published"
+msgstr "已发布"
+
+#: templates/semantic-ui/invenio_app_rdm/records/detail.html:224
+#, python-brace-format
+msgid "Version {version_number}"
+msgstr ""
+
+#: templates/semantic-ui/invenio_app_rdm/records/detail.html:242
+msgid "Record title and creators"
+msgstr "记录标题和创建者"
+
+#: templates/semantic-ui/invenio_app_rdm/records/detail.html:248
+msgid "Creators and contributors"
+msgstr "创建者和贡献者"
+
+#: templates/semantic-ui/invenio_app_rdm/records/detail.html:265
+#: templates/semantic-ui/invenio_app_rdm/records/detail.html:270
+#: templates/semantic-ui/invenio_app_rdm/records/detail.html:287
+msgid "Files"
+msgstr "文件"
+
+#: templates/semantic-ui/invenio_app_rdm/records/detail.html:309
+msgid "Request access"
+msgstr "申请访问"
+
+#: templates/semantic-ui/invenio_app_rdm/records/detail.html:311
+msgid ""
+"If you would like to request access to these files, please fill out the form"
+" below."
+msgstr "如果您想申请访问这些文件，请填写以下表格。"
+
+#: templates/semantic-ui/invenio_app_rdm/records/detail.html:319
+msgid ""
+"You need to satisfy these conditions in order for this request to be "
+"accepted:"
+msgstr "您需要满足以下条件才能使此请求被接受："
+
+#: templates/semantic-ui/invenio_app_rdm/records/detail.html:344
+msgid "System files"
+msgstr "系统文件"
+
+#: templates/semantic-ui/invenio_app_rdm/records/detail.html:357
+msgid "Additional record details"
+msgstr "附加记录详情"
+
+#: templates/semantic-ui/invenio_app_rdm/records/detail.html:371
+msgid "Record details"
+msgstr "记录详情"
+
+#: templates/semantic-ui/invenio_app_rdm/records/detail.html:388
+msgid "Jump to top of page"
+msgstr "跳转到页面顶部"
+
+#: templates/semantic-ui/invenio_app_rdm/records/detail.html:390
+msgid "Jump up"
+msgstr "向上跳转"
+
+#: templates/semantic-ui/invenio_app_rdm/records/details/description.html:14
+msgid "Record description"
+msgstr "记录描述"
+
+#: templates/semantic-ui/invenio_app_rdm/records/details/description.html:15
+msgid "Description"
+msgstr "描述"
+
+#: templates/semantic-ui/invenio_app_rdm/records/details/details.html:38
+msgid "Additional details"
+msgstr "附加详情"
+
+#: templates/semantic-ui/invenio_app_rdm/records/details/details.html:55
+#: templates/semantic-ui/invenio_app_rdm/records/details/details.html:73
+msgid "Additional titles"
+msgstr "附加标题"
+
+#: templates/semantic-ui/invenio_app_rdm/records/details/details.html:98
+#: templates/semantic-ui/invenio_app_rdm/records/details/details.html:116
+msgid "Identifiers"
+msgstr "标识符"
+
+#: templates/semantic-ui/invenio_app_rdm/records/details/details.html:180
+#: templates/semantic-ui/invenio_app_rdm/records/details/details.html:198
+msgid "Funding"
+msgstr "资助"
+
+#: templates/semantic-ui/invenio_app_rdm/records/details/details.html:223
+#: templates/semantic-ui/invenio_app_rdm/records/details/details.html:241
+msgid "Dates"
+msgstr "日期"
+
+#: templates/semantic-ui/invenio_app_rdm/records/details/details.html:313
+msgid "Citations"
+msgstr "引用"
+
+#: templates/semantic-ui/invenio_app_rdm/records/details/side_bar/details.html:15
+msgid "Details"
+msgstr "详情"
+
+#: templates/semantic-ui/invenio_app_rdm/records/details/side_bar/details.html:19
+msgid "Resource type"
+msgstr "资源类型"
+
+#: templates/semantic-ui/invenio_app_rdm/records/details/side_bar/details.html:21
+msgid "Publisher"
+msgstr "出版者"
+
+#: templates/semantic-ui/invenio_app_rdm/records/details/side_bar/details.html:22
+msgid "Published in"
+msgstr "发表于"
+
+#: templates/semantic-ui/invenio_app_rdm/records/details/side_bar/details.html:23
+msgid "Imprint"
+msgstr "出版信息"
+
+#: templates/semantic-ui/invenio_app_rdm/records/details/side_bar/details.html:24
+msgid "Thesis"
+msgstr "论文"
+
+#: templates/semantic-ui/invenio_app_rdm/records/details/side_bar/details.html:25
+msgid "Conference"
+msgstr "会议"
+
+#: templates/semantic-ui/invenio_app_rdm/records/details/side_bar/details.html:26
+msgid "Languages"
+msgstr "语言"
+
+#: templates/semantic-ui/invenio_app_rdm/records/details/side_bar/details.html:27
+msgid "Formats"
+msgstr "格式"
+
+#: templates/semantic-ui/invenio_app_rdm/records/details/side_bar/details.html:28
+msgid "Sizes"
+msgstr "大小"
+
+#: templates/semantic-ui/invenio_app_rdm/records/details/side_bar/licenses.html:15
+#: templates/semantic-ui/invenio_app_rdm/records/details/side_bar/licenses.html:18
+#: templates/semantic-ui/invenio_app_rdm/records/macros/detail.html:178
+#: templates/semantic-ui/invenio_app_rdm/records/macros/detail.html:209
+msgid "Opens in new tab"
+msgstr "在新标签页中打开"
+
+#: templates/semantic-ui/invenio_app_rdm/records/details/side_bar/licenses.html:15
+#: templates/semantic-ui/invenio_app_rdm/records/details/side_bar/licenses.html:18
+msgid "Read more"
+msgstr "了解更多"
+
+#: templates/semantic-ui/invenio_app_rdm/records/details/side_bar/licenses.html:26
+msgid "Rights"
+msgstr "权利"
+
+#: templates/semantic-ui/invenio_app_rdm/records/details/side_bar/licenses.html:58
+msgid "Close"
+msgstr "关闭"
+
+#: templates/semantic-ui/invenio_app_rdm/records/details/side_bar/licenses.html:62
+msgid "No further description."
+msgstr "没有进一步描述。"
+
+#: templates/semantic-ui/invenio_app_rdm/records/macros/detail.html:68
+#: templates/semantic-ui/invenio_app_rdm/records/macros/detail.html:71
+msgid "Missing description type!"
+msgstr "缺少描述类型！"
+
+#: templates/semantic-ui/invenio_app_rdm/records/macros/detail.html:90
+msgid "Unknown date type"
+msgstr "未知日期类型"
+
+#: templates/semantic-ui/invenio_app_rdm/records/macros/detail.html:130
+msgid "Open external link"
+msgstr "打开外部链接"
+
+#: templates/semantic-ui/invenio_app_rdm/records/macros/detail.html:320
+msgid "Conference website"
+msgstr "会议网站"
