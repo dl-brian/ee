@@ -11,9 +11,11 @@
 {%- from "invenio_app_rdm/records/macros/detail.html" import show_section_custom_fields, show_references, show_add_titles,
 show_alternate_identifiers, show_related_identifiers, show_funding, show_dates %}
 
+{% set hidden_schemes = ["openalex"] %}
+{% set visible_identifiers = metadata.identifiers|rejectattr("scheme", "in", hidden_schemes)|list if metadata.identifiers else [] %}
 {% set hasContent = namespace(value=false) %}
 {% set hasContent.value = record_ui["ui"]["additional_titles"] or
-                    metadata.identifiers or
+                    visible_identifiers or
                     record_ui["ui"]["related_identifiers"] or
                     metadata.funding or
                     record_ui["ui"]["dates"] or
@@ -82,8 +84,8 @@ show_alternate_identifiers, show_related_identifiers, show_funding, show_dates %
     <div class="ui divider"></div>
   {% endif %}
 
-  {% if metadata.identifiers %}
-    {% if metadata.identifiers|length > 5 %}
+  {% if visible_identifiers %}
+    {% if visible_identifiers|length > 5 %}
       <div class="ui fluid accordion padded grid rel-mb-1">
         <div class="active title sixteen wide mobile four wide tablet three wide computer column">
           <h3 class="ui header">
@@ -106,7 +108,7 @@ show_alternate_identifiers, show_related_identifiers, show_funding, show_dates %
           class="active content sixteen wide mobile twelve wide tablet thirteen wide computer column"
         >
           <dl class="details-list">
-            {{ show_alternate_identifiers(metadata.identifiers) }}
+            {{ show_alternate_identifiers(visible_identifiers) }}
           </dl>
         </div>
       </div>
@@ -117,7 +119,7 @@ show_alternate_identifiers, show_related_identifiers, show_funding, show_dates %
         </div>
         <div class="sixteen wide mobile twelve wide tablet thirteen wide computer column">
           <dl class="details-list">
-            {{ show_alternate_identifiers(metadata.identifiers) }}
+            {{ show_alternate_identifiers(visible_identifiers) }}
           </dl>
         </div>
       </div>
