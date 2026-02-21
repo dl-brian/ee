@@ -13,10 +13,12 @@ dependencies = [
     "invenio-previewer>=3.3.0,<3.4.0",
     "gunicorn~=23.0.0",
     "invenio-oauthclient",
+    "idutils",
 ]
 
 [tool.uv.sources]
 invenio-oauthclient = { git = "https://github.com/front-matter/invenio-oauthclient", branch = "maint-v5.x" }
+idutils = { git = "https://github.com/front-matter/idutils", branch = "openalex" }
 
 
 [build-system]

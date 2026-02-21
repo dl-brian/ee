@@ -1421,13 +1421,9 @@ wheels = [
 [[package]]
 name = "idutils"
 version = "1.5.1"
-source = { registry = "https://pypi.org/simple" }
+source = { git = "https://github.com/front-matter/idutils?branch=openalex#b60e5f46de948265b003306ab7cbcce36e5aca69" }
 dependencies = [
     { name = "isbnlib" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/ce/be/114efec47bd7b4b6e7ba4819e27e0ff1cba13bbd3c829bae5a31d12f82a5/idutils-1.5.1.tar.gz", hash = "sha256:d010750b10c0f516509614fc2997da619ab95585f9f2fe3bc149e5819d3acfd7", size = 35001, upload-time = "2025-12-16T15:57:44.826Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/9c/d4/0b075ed2e75ffbb4ec5ac927be4f10a5c349d8e5642f0499e40e931a1c06/idutils-1.5.1-py2.py3-none-any.whl", hash = "sha256:bbeb5dd8d7d803e69a32d825ae2d3dd1bf33b271cc06de06e3e83f2b93fc74c5", size = 24080, upload-time = "2025-12-16T15:57:43.456Z" },
 ]
 
 [[package]]
@@ -2126,6 +2122,7 @@ version = "13.0.8.0"
 source = { editable = "." }
 dependencies = [
     { name = "gunicorn" },
+    { name = "idutils" },
     { name = "invenio-app-rdm" },
     { name = "invenio-oauthclient" },
     { name = "invenio-previewer" },
@@ -2141,6 +2138,7 @@ docs = [
 [package.metadata]
 requires-dist = [
     { name = "gunicorn", specifier = "~=23.0.0" },
+    { name = "idutils", git = "https://github.com/front-matter/idutils?branch=openalex" },
     { name = "invenio-app-rdm", specifier = ">=13.0.8,<14.0.0" },
     { name = "invenio-oauthclient", git = "https://github.com/front-matter/invenio-oauthclient?branch=maint-v5.x" },
     { name = "invenio-previewer", specifier = ">=3.3.0,<3.4.0" },
