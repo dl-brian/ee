@@ -201,18 +201,21 @@
 
 
 {% macro show_alternate_identifiers(identifiers) %}
+  {% set hidden_schemes = ["openalex"] %}
   {% for alt_id in identifiers %}
-    <dt class="ui tiny header">{{ alt_id.scheme | get_scheme_label }}</dt>
-    <dd>
-      {% set url = alt_id.identifier|pid_url(scheme=alt_id.scheme) %}
-      {% if url %}
-        <a href="{{ url }}" target="_blank" title="{{ _('Opens in new tab') }}">
+    {% if alt_id.scheme not in hidden_schemes %}
+      <dt class="ui tiny header">{{ alt_id.scheme | get_scheme_label }}</dt>
+      <dd>
+        {% set url = alt_id.identifier|pid_url(scheme=alt_id.scheme) %}
+        {% if url %}
+          <a href="{{ url }}" target="_blank" title="{{ _('Opens in new tab') }}">
+            {{ alt_id.identifier }}
+          </a>
+        {% else %}
           {{ alt_id.identifier }}
-        </a>
-      {% else %}
-        {{ alt_id.identifier }}
-      {% endif %}
-    </dd>
+        {% endif %}
+      </dd>
+    {% endif %}
   {% endfor %}
 {% endmacro %}
 
