@@ -79,7 +79,7 @@ services:
       - ./Caddyfile:/etc/caddy/Caddyfile
       - caddy_data:/data
       - caddy_config:/config
-  web:
+  inveniordm:
     image: ghcr.io/dl-brian/invenio-rdm-starter:latest
     platform: linux/amd64
     pull_policy: if_not_present
@@ -145,7 +145,7 @@ services:
         condition: service_started
       db:
         condition: service_started
-  worker:
+  inveniordm-worker:
     command: "celery -A invenio_app.celery worker --beat --events --loglevel=WARNING"
     image: ghcr.io/dl-brian/invenio-rdm-starter:latest
     platform: linux/amd64
