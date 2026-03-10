@@ -1,6 +1,8 @@
-FROM python:3.13.11-bookworm AS builder
-LABEL service="starter"
+FROM python:3.14-bookworm AS builder
 LABEL maintainer="Front Matter <info@front-matter.de>"
+LABEL org.opencontainers.image.source="https://github.com/front-matter/invenio-rdm-starter^"
+LABEL org.opencontainers.image.licenses="MIT"
+LABEL org.opencontainers.image.title="InvenioRDM Starter"
 
 # Dockerfile that builds the InvenioRDM Starter Docker image.
 
@@ -54,12 +56,14 @@ RUN --mount=type=cache,target=/var/cache/assets \
 
 # Copy application files to instance path
 COPY ./invenio.cfg ${INVENIO_INSTANCE_PATH}/
+COPY ./gunicorn.conf.py ${INVENIO_INSTANCE_PATH}/
 COPY site ${INVENIO_INSTANCE_PATH}/site
 COPY static ${INVENIO_INSTANCE_PATH}/static
 COPY assets ${INVENIO_INSTANCE_PATH}/assets
 COPY templates ${INVENIO_INSTANCE_PATH}/templates
 COPY app_data ${INVENIO_INSTANCE_PATH}/app_data
 COPY translations ${INVENIO_INSTANCE_PATH}/translations
+COPY update_subjects.py ${INVENIO_INSTANCE_PATH}/
 
 # Compile translation catalogs
 RUN pybabel compile -d ${INVENIO_INSTANCE_PATH}/translations
@@ -73,41 +77,78 @@ WORKDIR ${INVENIO_INSTANCE_PATH}/assets
 RUN pnpm install && \
   pnpm run build
 
-FROM python:3.13.11-slim-bookworm AS runtime
+# Gather runtime libraries by finding .so files directly (most reliable).
+# Uses cp -L to dereference symlinks so only real files are stored.
+# ldconfig in the runtime stage will re-create symlinks and cache.
+RUN MULTIARCH="$(dpkg-architecture -qDEB_HOST_MULTIARCH)" && \
+  LIB_DIR="/usr/lib/${MULTIARCH}" && \
+  mkdir -p /invenio-libs && \
+  echo "${MULTIARCH}" > /invenio-libs/.arch && \
+  for pattern in \
+  'libcairo.so*' \
+  'libpango-1.0.so*' 'libpangocairo-1.0.so*' 'libpangoft2-1.0.so*' \
+  'libgdk_pixbuf-2.0.so*' \
+  'libgobject-2.0.so*' 'libglib-2.0.so*' 'libgio-2.0.so*' 'libgmodule-2.0.so*' \
+  'libxml2.so*' 'libxslt.so*' 'libexslt.so*' \
+  'libpq.so*' 'libjpeg.so*' 'libwebp.so*' 'libtiff.so*' 'libcurl.so*' \
+  'libfribidi.so*' 'libharfbuzz.so*' 'libfontconfig.so*' 'libfreetype.so*' \
+  'libpixman-1.so*' 'libpng16.so*' 'libexpat.so*' \
+  'libbrotlicommon.so*' 'libbrotlidec.so*' \
+  'libdatrie.so*' 'libthai.so*' 'libpcre2-8.so*' 'libffi.so*' \
+  'libbsd.so*' 'libmd.so*' 'libdeflate.so*' 'libjbig.so*' \
+  'libzstd.so*' 'liblerc.so*' 'libnghttp2.so*' 'libssh2.so*' \
+  'libssl.so*' 'libcrypto.so*' \
+  'libicudata.so*' 'libicui18n.so*' 'libicuuc.so*' \
+  'libX11.so*' 'libXext.so*' 'libXrender.so*' \
+  'libxcb.so*' 'libxcb-render.so*' 'libxcb-shm.so*' \
+  'libXau.so*' 'libXdmcp.so*' \
+  ; do \
+  find "${LIB_DIR}" -maxdepth 1 -name "${pattern}" -exec cp -Ln {} /invenio-libs/ \; 2>/dev/null || true; \
+  done && \
+  ls /invenio-libs/libcairo.so* || { echo "FATAL: libcairo not found in ${LIB_DIR}"; find /usr -name 'libcairo*' 2>/dev/null; exit 1; } && \
+  echo "Collected $(ls /invenio-libs/ | wc -l) library files"
+
+
+FROM python:3.14-slim-bookworm AS runtime
 
 ENV LANG=en_US.UTF-8 \
-  LANGUAGE=en_US:en
-
-# Install OS package dependencies
-RUN --mount=type=cache,sharing=locked,target=/var/cache/apt \
-  apt-get update --fix-missing && \
-  apt-get install -y apt-utils gpg libcairo2 debian-keyring \
-  debian-archive-keyring apt-transport-https curl --no-install-recommends
-
-ENV VIRTUAL_ENV=/opt/invenio/.venv \
+  LANGUAGE=en_US:en \
+  VIRTUAL_ENV=/opt/invenio/.venv \
   PATH="/opt/invenio/.venv/bin:$PATH" \
   WORKING_DIR=/opt/invenio \
   INVENIO_INSTANCE_PATH=/opt/invenio/var/instance
 
-# Create invenio user and set appropriate permissions
+# create non-root invenio user
 ENV INVENIO_USER_ID=1000
 RUN adduser invenio --uid ${INVENIO_USER_ID} --gid 0 --no-create-home --disabled-password
 
-COPY --from=builder --chown=invenio:root ${VIRTUAL_ENV} ${VIRTUAL_ENV}
-COPY --from=builder --chown=invenio:root ${INVENIO_INSTANCE_PATH}/site ${INVENIO_INSTANCE_PATH}/site
-COPY --from=builder --chown=invenio:root ${INVENIO_INSTANCE_PATH}/static ${INVENIO_INSTANCE_PATH}/static
-COPY --from=builder --chown=invenio:root ${INVENIO_INSTANCE_PATH}/assets ${INVENIO_INSTANCE_PATH}/assets
-COPY --from=builder --chown=invenio:root ${INVENIO_INSTANCE_PATH}/templates ${INVENIO_INSTANCE_PATH}/templates
-COPY --from=builder --chown=invenio:root ${INVENIO_INSTANCE_PATH}/app_data ${INVENIO_INSTANCE_PATH}/app_data
-COPY --from=builder --chown=invenio:root ${INVENIO_INSTANCE_PATH}/translations ${INVENIO_INSTANCE_PATH}/translations
-COPY --from=builder --chown=invenio:root ${INVENIO_INSTANCE_PATH}/invenio.cfg ${INVENIO_INSTANCE_PATH}/invenio.cfg
-COPY ./Caddyfile /etc/caddy/Caddyfile
+# Copy prebuilt runtime libraries into arch-specific directory
+# so ctypes.util.find_library() can locate them via ldconfig cache
+COPY --from=builder /invenio-libs/ /tmp/invenio-libs/
+RUN MULTIARCH="$(cat /tmp/invenio-libs/.arch)" && \
+  TARGET="/usr/lib/${MULTIARCH}" && \
+  mkdir -p "${TARGET}" && \
+  find /tmp/invenio-libs -maxdepth 1 -name '*.so*' -exec cp {} "${TARGET}/" \; && \
+  rm -rf /tmp/invenio-libs && \
+  ldconfig && \
+  ldconfig -p | grep -i cairo && \
+  python3 -c "import ctypes.util; r=ctypes.util.find_library('cairo'); print(f'cairo: {r}'); assert r, 'libcairo not found'"
 
-COPY ./setup.sh /opt/invenio/.venv/bin/setup.sh
+COPY --from=builder --chown=1000:0 ${VIRTUAL_ENV} ${VIRTUAL_ENV}
+COPY --from=builder --chown=1000:0 ${INVENIO_INSTANCE_PATH}/site ${INVENIO_INSTANCE_PATH}/site
+COPY --from=builder --chown=1000:0 ${INVENIO_INSTANCE_PATH}/static ${INVENIO_INSTANCE_PATH}/static
+COPY --from=builder --chown=1000:0 ${INVENIO_INSTANCE_PATH}/assets ${INVENIO_INSTANCE_PATH}/assets
+COPY --from=builder --chown=1000:0 ${INVENIO_INSTANCE_PATH}/templates ${INVENIO_INSTANCE_PATH}/templates
+COPY --from=builder --chown=1000:0 ${INVENIO_INSTANCE_PATH}/app_data ${INVENIO_INSTANCE_PATH}/app_data
+COPY --from=builder --chown=1000:0 ${INVENIO_INSTANCE_PATH}/translations ${INVENIO_INSTANCE_PATH}/translations
+COPY --from=builder --chown=1000:0 ${INVENIO_INSTANCE_PATH}/invenio.cfg ${INVENIO_INSTANCE_PATH}/invenio.cfg
+COPY --from=builder --chown=1000:0 ${INVENIO_INSTANCE_PATH}/gunicorn.conf.py ${INVENIO_INSTANCE_PATH}/gunicorn.conf.py
+COPY --from=builder --chown=1000:0 --chmod=755 ${INVENIO_INSTANCE_PATH}/update_subjects.py ${INVENIO_INSTANCE_PATH}/update_subjects.py
+COPY --chown=1000:0 ./Caddyfile /etc/caddy/Caddyfile
+COPY --chown=1000:0 --chmod=755 ./entrypoint.sh /opt/invenio/.venv/bin/entrypoint.sh
 
 WORKDIR ${WORKING_DIR}/src
 
-# USER invenio
-
+USER invenio
 EXPOSE 5000
-CMD ["gunicorn", "invenio_app.wsgi:application", "--bind", "0.0.0.0:5000", "--workers", "4", "--access-logfile", "-", "--error-logfile", "-", "--log-level", "ERROR"]
+CMD ["gunicorn", "invenio_app.wsgi:application", "--bind", "0.0.0.0:5000", "--workers", "2", "--threads", "4", "--config", "/opt/invenio/var/instance/gunicorn.conf.py"]

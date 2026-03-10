@@ -11,9 +11,11 @@ dependencies = [
     "invenio-search[opensearch2]>=3.0.0",
     "invenio-s3>=3.0.2",
     "invenio-previewer>=3.3.0,<3.4.0",
-    "gunicorn~=23.0.0",
     "invenio-oauthclient",
     "idutils",
+    "setuptools>=70,<81",
+    "gunicorn~=23.0.0",
+    "structlog>=25.0",
 ]
 
 [tool.uv.sources]
