@@ -146,7 +146,7 @@ services:
       db:
         condition: service_started
   inveniordm-worker:
-    command: "celery -A invenio_app.celery worker --beat --events --loglevel=WARNING"
+    command: "celery -A invenio_app.celery worker --beat --events --loglevel=INFO -s /tmp/celerybeat-schedule"
     image: ghcr.io/dl-brian/invenio-rdm-starter:latest
     platform: linux/amd64
     pull_policy: if_not_present

@@ -4,7 +4,7 @@ version = "13.0.8.0"
 description = "Starter for the invenio-rdm turn-key research data management repository"
 authors = [{ name = "Martin Fenner", email = "martin@front-matter.de" }]
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.14,<3.15"
 license = "MIT"
 dependencies = [
     "invenio-app-rdm>=13.0.8,<14.0.0",
@@ -30,9 +30,15 @@ build-backend = "hatchling.build"
 [tool.hatch.build]
 include = ["site/invenio_rdm_starter/*.py"]
 
+[tool.hatch.build.targets.wheel]
+sources = { "site" = "" }
+
 [tool.ruff]
 line-length = 79
 include = ["pyproject.toml", "site/**/*.py"]
+
+[project.entry-points."invenio_base.blueprints"]
+invenio_rdm_starter = "invenio_rdm_starter.views:create_blueprint"
 
 [project.optional-dependencies]
 docs = ["mkdocs-material>=9.7.0"]

@@ -46,7 +46,7 @@ COPY . .
 
 # Install Python dependencies
 RUN --mount=type=cache,target=/root/.cache/uv \
-  uv sync --frozen --no-dev
+  uv sync --frozen --no-dev --no-editable
 
 # Build Javascript assets using rspack
 ENV WEBPACKEXT_PROJECT=invenio_assets.webpack:rspack_project
