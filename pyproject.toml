@@ -1,6 +1,6 @@
 [project]
 name = "invenio-rdm-starter"
-version = "13.0.8.0"
+version = "13.0.8.1"
 description = "Starter for the invenio-rdm turn-key research data management repository"
 authors = [{ name = "Martin Fenner", email = "martin@front-matter.de" }]
 readme = "README.md"
@@ -16,6 +16,7 @@ dependencies = [
     "setuptools>=70,<81",
     "gunicorn~=23.0.0",
     "structlog>=25.0",
+    "prometheus-flask-exporter>=0.23.1",
 ]
 
 [tool.uv.sources]
