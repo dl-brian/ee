@@ -7,6 +7,7 @@ from pathlib import Path
 from flask import Blueprint, abort, request
 from invenio_administration.permissions import administration_permission
 from prometheus_flask_exporter.multiprocess import (
+    GunicornPrometheusMetrics,
     GunicornInternalPrometheusMetrics,
 )
 
@@ -26,7 +27,13 @@ def _metrics_access(f):
 
 
 def _init_metrics(app, **kwargs):
-    """Initialize metrics using Gunicorn multiprocess mode."""
+    """Initialize API metrics using Gunicorn multiprocess mode."""
+    _ensure_multiproc_dir()
+    return GunicornInternalPrometheusMetrics(app, **kwargs)
+
+
+def _ensure_multiproc_dir():
+    """Ensure Prometheus multiprocess directory exists and is configured."""
     multiproc_dir = (
         os.environ.get("PROMETHEUS_MULTIPROC_DIR")
         or os.environ.get("prometheus_multiproc_dir")
@@ -34,19 +41,19 @@ def _init_metrics(app, **kwargs):
     )
     os.environ.setdefault("PROMETHEUS_MULTIPROC_DIR", multiproc_dir)
     Path(multiproc_dir).mkdir(parents=True, exist_ok=True)
-    return GunicornInternalPrometheusMetrics(app, **kwargs)
+    return multiproc_dir
 
 
 def create_api_blueprint(app):
     """Register Prometheus metrics on the API Flask app."""
     _init_metrics(
         app,
-        path="/api/metrics",
+        path="/metrics",
         group_by="endpoint",
         metrics_decorator=_metrics_access,
     )
-    # Disable HTTPS redirect for /api/metrics so internal Prometheus scrapers
-    # can reach it without TLS (same pattern as /ping).
+    # Disable HTTPS redirect for the metrics endpoint on the API app.
+    # In the combined app this is exposed externally as /api/metrics.
     metrics_view = app.view_functions.get("prometheus_metrics")
     if metrics_view is not None:
         metrics_view.talisman_view_options = {"force_https": False}
@@ -58,12 +65,10 @@ def create_api_blueprint(app):
 #
 def create_blueprint(app):
     """Register blueprint routes on app."""
-    # Track UI app requests in the shared multiprocess registry.
-    # metrics_endpoint=False avoids registering a duplicate metrics route
-    # (that lives on the API app via create_api_blueprint).
-    _init_metrics(
-        app, group_by="endpoint", export_defaults=True, metrics_endpoint=False
-    )
+    # Track UI app requests in the shared multiprocess registry without
+    # exposing an endpoint on the UI app.
+    _ensure_multiproc_dir()
+    GunicornPrometheusMetrics(app, group_by="endpoint", export_defaults=True)
 
     blueprint = Blueprint(
         "invenio_rdm_starter",

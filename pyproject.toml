@@ -41,5 +41,8 @@ include = ["pyproject.toml", "site/**/*.py"]
 [project.entry-points."invenio_base.blueprints"]
 invenio_rdm_starter = "invenio_rdm_starter.views:create_blueprint"
 
+[project.entry-points."invenio_base.api_blueprints"]
+invenio_rdm_starter_api = "invenio_rdm_starter.views:create_api_blueprint"
+
 [project.optional-dependencies]
 docs = ["mkdocs-material>=9.7.0"]

@@ -118,10 +118,11 @@ The `docker-compose.yml` configuration can be modified to suit your needs using 
 
 ### Prometheus Metrics
 
-* Metrics are exposed on the API app at `/api/metrics`.
+* Metrics are registered on the API app at `/metrics`.
+* In the combined UI+API Invenio app, this is exposed externally as `/api/metrics`.
 * In Gunicorn deployments, metrics run in Prometheus multiprocess mode.
 * `PROMETHEUS_MULTIPROC_DIR` must point to a writable directory (defaults to `/tmp/prometheus_multiproc` in this project).
-* Requests coming through a proxy (`X-Forwarded-For`) require the Invenio administration permission for `/api/metrics`.
+* Requests coming through a proxy (`X-Forwarded-For`) require the Invenio administration permission for metrics access.
 
 ### Invenio-Mail
 
