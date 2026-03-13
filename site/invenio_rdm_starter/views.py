@@ -1,10 +1,14 @@
 """Additional views."""
 
+import os
 from functools import wraps
+from pathlib import Path
 
 from flask import Blueprint, abort, request
 from invenio_administration.permissions import administration_permission
-from prometheus_flask_exporter import PrometheusMetrics
+from prometheus_flask_exporter.multiprocess import (
+    GunicornInternalPrometheusMetrics,
+)
 
 
 def _metrics_access(f):
@@ -21,9 +25,21 @@ def _metrics_access(f):
     return decorated
 
 
+def _init_metrics(app, **kwargs):
+    """Initialize metrics using Gunicorn multiprocess mode."""
+    multiproc_dir = (
+        os.environ.get("PROMETHEUS_MULTIPROC_DIR")
+        or os.environ.get("prometheus_multiproc_dir")
+        or "/tmp/prometheus_multiproc"
+    )
+    os.environ.setdefault("PROMETHEUS_MULTIPROC_DIR", multiproc_dir)
+    Path(multiproc_dir).mkdir(parents=True, exist_ok=True)
+    return GunicornInternalPrometheusMetrics(app, **kwargs)
+
+
 def create_api_blueprint(app):
     """Register Prometheus metrics on the API Flask app."""
-    metrics = PrometheusMetrics(
+    _init_metrics(
         app,
         path="/api/metrics",
         group_by="endpoint",
@@ -45,7 +61,7 @@ def create_blueprint(app):
     # Track UI app requests in the shared multiprocess registry.
     # metrics_endpoint=False avoids registering a duplicate metrics route
     # (that lives on the API app via create_api_blueprint).
-    PrometheusMetrics(
+    _init_metrics(
         app, group_by="endpoint", export_defaults=True, metrics_endpoint=False
     )
 

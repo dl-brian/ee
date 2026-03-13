@@ -68,6 +68,9 @@ x-common-env:
   INVENIO_S3_SECRET_ACCESS_KEY: ${INVENIO_S3_SECRET_ACCESS_KEY:-}
   INVENIO_S3_BUCKET_NAME: ${INVENIO_S3_BUCKET_NAME:-}
 
+  # Prometheus multiprocess metrics (Gunicorn)
+  PROMETHEUS_MULTIPROC_DIR: ${PROMETHEUS_MULTIPROC_DIR:-/tmp/prometheus_multiproc}
+
 services:
   proxy:
     image: caddy:2.10

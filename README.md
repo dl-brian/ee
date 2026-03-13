@@ -116,6 +116,13 @@ The `docker-compose.yml` configuration can be modified to suit your needs using 
 
 * `INVENIO_LOGGING_CONSOLE_LEVEL` - The logging console level used by InvenioRDM, defaults to `WARNING`.
 
+### Prometheus Metrics
+
+* Metrics are exposed on the API app at `/api/metrics`.
+* In Gunicorn deployments, metrics run in Prometheus multiprocess mode.
+* `PROMETHEUS_MULTIPROC_DIR` must point to a writable directory (defaults to `/tmp/prometheus_multiproc` in this project).
+* Requests coming through a proxy (`X-Forwarded-For`) require the Invenio administration permission for `/api/metrics`.
+
 ### Invenio-Mail
 
 * `INVENIO_MAIL_SUPPRESS_SEND` - Set to `True` to suppress sending emails, defaults to `True`. Useful for development and testing.
