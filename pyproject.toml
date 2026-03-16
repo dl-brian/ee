@@ -11,6 +11,7 @@ dependencies = [
     "invenio-search[opensearch2]>=3.0.0",
     "invenio-s3>=3.0.2",
     "invenio-previewer>=3.3.0,<3.4.0",
+    "invenio-vocabularies",
     "invenio-oauthclient",
     "idutils",
     "setuptools>=70,<81",
@@ -22,6 +23,7 @@ dependencies = [
 [tool.uv.sources]
 invenio-oauthclient = { git = "https://github.com/front-matter/invenio-oauthclient", branch = "maint-v5.x" }
 idutils = { git = "https://github.com/front-matter/idutils", branch = "openalex" }
+invenio-vocabularies = { path = "/Users/mfenner/Documents/git/invenio-vocabularies", editable = true }
 
 
 [build-system]
