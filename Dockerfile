@@ -1,10 +1,10 @@
 FROM python:3.14-bookworm AS builder
 LABEL maintainer="Front Matter <info@front-matter.de>"
-LABEL org.opencontainers.image.source="https://github.com/front-matter/invenio-rdm-starter^"
+LABEL org.opencontainers.image.source="https://github.com/dl-brian/ee"
 LABEL org.opencontainers.image.licenses="MIT"
-LABEL org.opencontainers.image.title="InvenioRDM Starter"
+LABEL org.opencontainers.image.title="Engineering Edge Repository"
 
-# Dockerfile that builds the InvenioRDM Starter Docker image.
+# Dockerfile that builds the Engineering Edge Docker image.
 
 ENV LANG=en_US.UTF-8 \
   LANGUAGE=en_US:en

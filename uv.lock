@@ -775,6 +775,50 @@ wheels = [
 ]
 
 [[package]]
+name = "ee"
+version = "13.0.8.1"
+source = { editable = "." }
+dependencies = [
+    { name = "gunicorn" },
+    { name = "idutils" },
+    { name = "invenio-app-rdm" },
+    { name = "invenio-logging", extra = ["sentry"] },
+    { name = "invenio-oauthclient" },
+    { name = "invenio-previewer" },
+    { name = "invenio-s3" },
+    { name = "invenio-search", extra = ["opensearch2"] },
+    { name = "invenio-vocabularies" },
+    { name = "prometheus-flask-exporter" },
+    { name = "setuptools" },
+    { name = "structlog" },
+    { name = "structlog-sentry" },
+]
+
+[package.optional-dependencies]
+docs = [
+    { name = "mkdocs-material" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "gunicorn", specifier = "~=23.0.0" },
+    { name = "idutils", git = "https://github.com/front-matter/idutils?branch=openalex" },
+    { name = "invenio-app-rdm", specifier = ">=13.0.8,<14.0.0" },
+    { name = "invenio-logging", extras = ["sentry"] },
+    { name = "invenio-oauthclient", git = "https://github.com/front-matter/invenio-oauthclient?branch=maint-v5.x" },
+    { name = "invenio-previewer", specifier = ">=3.3.0,<3.4.0" },
+    { name = "invenio-s3", specifier = ">=3.0.2" },
+    { name = "invenio-search", extras = ["opensearch2"], specifier = ">=3.0.0" },
+    { name = "invenio-vocabularies", git = "https://github.com/front-matter/invenio-vocabularies?branch=maint-8.x" },
+    { name = "mkdocs-material", marker = "extra == 'docs'", specifier = ">=9.7.0" },
+    { name = "prometheus-flask-exporter", specifier = ">=0.23.1" },
+    { name = "setuptools", specifier = ">=70,<81" },
+    { name = "structlog", specifier = ">=25.0" },
+    { name = "structlog-sentry", specifier = ">=2.1.0" },
+]
+provides-extras = ["docs"]
+
+[[package]]
 name = "elementpath"
 version = "5.1.1"
 source = { registry = "https://pypi.org/simple" }
@@ -2049,50 +2093,6 @@ sdist = { url = "https://files.pythonhosted.org/packages/50/55/fbf440363b58fa98b
 wheels = [
     { url = "https://files.pythonhosted.org/packages/c2/31/c7110fa11a40a8a9a2c83c706575729efa51a0d7c7740cdf53a567829c58/invenio_rdm_records-19.6.3-py2.py3-none-any.whl", hash = "sha256:7a1f8585ae6e17b4e65417e809b9474646ead01859cbb310ca5c55e38e7ed336", size = 1801523, upload-time = "2026-01-16T15:33:28.513Z" },
 ]
-
-[[package]]
-name = "invenio-rdm-starter"
-version = "13.0.8.1"
-source = { editable = "." }
-dependencies = [
-    { name = "gunicorn" },
-    { name = "idutils" },
-    { name = "invenio-app-rdm" },
-    { name = "invenio-logging", extra = ["sentry"] },
-    { name = "invenio-oauthclient" },
-    { name = "invenio-previewer" },
-    { name = "invenio-s3" },
-    { name = "invenio-search", extra = ["opensearch2"] },
-    { name = "invenio-vocabularies" },
-    { name = "prometheus-flask-exporter" },
-    { name = "setuptools" },
-    { name = "structlog" },
-    { name = "structlog-sentry" },
-]
-
-[package.optional-dependencies]
-docs = [
-    { name = "mkdocs-material" },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "gunicorn", specifier = "~=23.0.0" },
-    { name = "idutils", git = "https://github.com/front-matter/idutils?branch=openalex" },
-    { name = "invenio-app-rdm", specifier = ">=13.0.8,<14.0.0" },
-    { name = "invenio-logging", extras = ["sentry"] },
-    { name = "invenio-oauthclient", git = "https://github.com/front-matter/invenio-oauthclient?branch=maint-v5.x" },
-    { name = "invenio-previewer", specifier = ">=3.3.0,<3.4.0" },
-    { name = "invenio-s3", specifier = ">=3.0.2" },
-    { name = "invenio-search", extras = ["opensearch2"], specifier = ">=3.0.0" },
-    { name = "invenio-vocabularies", git = "https://github.com/front-matter/invenio-vocabularies?branch=maint-8.x" },
-    { name = "mkdocs-material", marker = "extra == 'docs'", specifier = ">=9.7.0" },
-    { name = "prometheus-flask-exporter", specifier = ">=0.23.1" },
-    { name = "setuptools", specifier = ">=70,<81" },
-    { name = "structlog", specifier = ">=25.0" },
-    { name = "structlog-sentry", specifier = ">=2.1.0" },
-]
-provides-extras = ["docs"]
 
 [[package]]
 name = "invenio-records"
