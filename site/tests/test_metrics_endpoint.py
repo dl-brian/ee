@@ -6,7 +6,7 @@ from unittest.mock import patch
 
 from flask import Flask
 
-from invenio_rdm_starter.views import create_api_blueprint, create_blueprint
+from ee.views import create_api_blueprint, create_blueprint
 
 
 class MetricsEndpointTestCase(unittest.TestCase):
@@ -47,7 +47,7 @@ class MetricsEndpointTestCase(unittest.TestCase):
                 client = app.test_client()
 
                 with patch(
-                    "invenio_rdm_starter.views.administration_permission.can",
+                    "ee.views.administration_permission.can",
                     return_value=False,
                 ):
                     response = client.get(
@@ -68,7 +68,7 @@ class MetricsEndpointTestCase(unittest.TestCase):
                 client = app.test_client()
 
                 with patch(
-                    "invenio_rdm_starter.views.administration_permission.can",
+                    "ee.views.administration_permission.can",
                     return_value=True,
                 ):
                     response = client.get(

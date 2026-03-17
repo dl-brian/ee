@@ -1,6 +1,6 @@
-![GitHub](https://img.shields.io/github/license/front-matter/invenio-rdm-starter?logo=MIT)
+![GitHub](https://img.shields.io/github/license/dl-brian/ee?logo=MIT)
 
-# InvenioRDM Starter
+# Engineering Edge Repository
 
 ![Screenshot](screenshot.png)
 

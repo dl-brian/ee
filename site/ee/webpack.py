@@ -10,7 +10,7 @@ theme = WebpackThemeBundle(
         "semantic-ui": dict(
             entry={
                 # Inter font definitions
-                "invenio-rdm-starter-fonts": "./less/invenio_rdm_starter/fonts.less",
+                "ee-fonts": "./less/ee/fonts.less",
             },
         ),
     },

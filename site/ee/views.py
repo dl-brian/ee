@@ -71,7 +71,7 @@ def create_blueprint(app):
     GunicornPrometheusMetrics(app, group_by="endpoint", export_defaults=True)
 
     blueprint = Blueprint(
-        "invenio_rdm_starter",
+        "ee",
         __name__,
         template_folder="./templates",
     )
