@@ -18,12 +18,14 @@ dependencies = [
     "gunicorn~=23.0.0",
     "structlog>=25.0",
     "prometheus-flask-exporter>=0.23.1",
+    "invenio-logging[sentry]",
+    "structlog-sentry>=2.1.0",
 ]
 
 [tool.uv.sources]
 invenio-oauthclient = { git = "https://github.com/front-matter/invenio-oauthclient", branch = "maint-v5.x" }
 idutils = { git = "https://github.com/front-matter/idutils", branch = "openalex" }
-invenio-vocabularies = { path = "/Users/mfenner/Documents/git/invenio-vocabularies", editable = true }
+invenio-vocabularies = { git = "https://github.com/front-matter/invenio-vocabularies", branch = "maint-8.x" }
 
 
 [build-system]
