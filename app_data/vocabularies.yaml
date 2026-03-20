@@ -58,3 +58,6 @@ awards:
 names:
   pid-type: names
   data-file: vocabularies/names.yaml
+competitiontypes:
+  pid-type: comptyp
+  data-file: vocabularies/competition_types.yaml
