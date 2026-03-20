@@ -9,7 +9,7 @@
 #}
 
 {%- from "invenio_app_rdm/records/macros/detail.html" import
-  list_languages, list_string_values, show_dates, show_detail, show_detail_conference, show_detail_thesis %}
+  list_languages, list_vocabulary_values, show_dates, show_detail, show_detail_conference, show_detail_thesis %}
 
 <div class="sidebar-container">
   <h2 class="ui medium top attached header mt-0">{{ _('Details')}}</h2>
@@ -24,7 +24,7 @@
       {{ show_detail_thesis(_('Thesis'), record_ui["ui"]["publishing_information"]["thesis"]) if record_ui["ui"].get('publishing_information', {}).get('thesis', {}) }}
       {{ show_detail(_('Conference'), show_detail_conference(record_ui["ui"]["conference"])) if record_ui["ui"]["conference"] }}
       {{ show_detail(_('Languages'), list_languages(record_ui["ui"]["languages"])) if record_ui["ui"]["languages"] }}
-      {{ show_detail(_('Competition'), list_string_values(record_ui["ui"]["custom_fields"].get("ee:competition"))) if record_ui["ui"]["custom_fields"].get("ee:competition", None) }}
+      {{ show_detail(_('Competition'), list_vocabulary_values("ee:competition", record_ui["ui"]["custom_fields"].get("ee:competition"))) if record_ui["ui"]["custom_fields"].get("ee:competition", None) }}
       {{ show_detail(_('Formats'), ", ".join(metadata.formats)) if metadata.formats }}
       {{ show_detail(_('Sizes'), ", ".join(metadata.sizes)) if metadata.sizes }}
     </dl>
