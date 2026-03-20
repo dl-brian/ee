@@ -964,3 +964,41 @@
   tags:
     - depositable
     - linkable
+- id: publication-industrywhitepaper
+  icon: file alternate
+  props:
+    csl: article
+    datacite_general: Report
+    datacite_type: ""
+    openaire_resourceType: "0017"
+    openaire_type: publication
+    eurepo: info:eu-repo/semantics/report
+    schema.org: https://schema.org/Report
+    subtype: publication-report
+    type: publication
+    marc21_type: publication
+    marc21_subtype: report
+  title:
+    en: Industry white paper
+  tags:
+    - depositable
+    - linkable
+- id: publication-tradearticle
+  icon: file alternate
+  props:
+    csl: article
+    datacite_general: Report
+    datacite_type: ""
+    openaire_resourceType: "0017"
+    openaire_type: publication
+    eurepo: info:eu-repo/semantics/report
+    schema.org: https://schema.org/Report
+    subtype: publication-report
+    type: publication
+    marc21_type: publication
+    marc21_subtype: report
+  title:
+    en: Trade article
+  tags:
+    - depositable
+    - linkable
