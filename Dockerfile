@@ -1,4 +1,4 @@
-FROM python:3.14-bookworm AS builder
+FROM python:3.13-trixie AS builder
 LABEL maintainer="Front Matter <info@front-matter.de>"
 LABEL org.opencontainers.image.source="https://github.com/dl-brian/ee"
 LABEL org.opencontainers.image.licenses="MIT"
@@ -113,7 +113,7 @@ RUN MULTIARCH="$(dpkg-architecture -qDEB_HOST_MULTIARCH)" && \
   echo "Collected $(ls /invenio-libs/ | wc -l) library files"
 
 
-FROM python:3.14-slim-bookworm AS runtime
+FROM python:3.13-slim-trixie AS runtime
 
 ENV LANG=en_US.UTF-8 \
   LANGUAGE=en_US:en \
