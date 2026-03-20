@@ -1,9 +1,9 @@
-- id: formula
+- id: formula_student
   title:
     en: Formula Student
 - id: fsae
   title:
     en: FSAE
-- id: moto
+- id: moto_student
   title:
     en: MotoStudent
