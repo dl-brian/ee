@@ -1,15 +1,4 @@
 # Engineering Edge Docker Compose
-#
-# Usage::
-#
-#   $ docker compose up -d
-#
-# The following services are included:
-# - Reverse proxy: Caddy (exposed ports: 80, 443)
-# - Web application: Gunicorn (exposed port: none)
-# - DB: (PostgresSQL) (exposed port: 5432)
-# - Cache and message queue: Valkey (exposed port: 6379)
-# - Search platform: OpenSearch (exposed ports: 9200, 9300)
 
 x-common-env:
   # Flask-SQLAlchemy
